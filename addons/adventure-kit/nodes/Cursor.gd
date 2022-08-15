@@ -1,5 +1,6 @@
 tool
 extends AnimatedSprite
+class_name AnimatedCursor, "res://addons/adventure-kit/icons/arrow-cursor.svg"
 
 export var create_hotspots : bool setget _create_hotspots
 var hotspots := {}

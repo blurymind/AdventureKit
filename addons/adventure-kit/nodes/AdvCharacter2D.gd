@@ -1,30 +1,15 @@
-tool
 extends KinematicBody2D
-class_name AdventureCharacter2D
+class_name AdventureCharacter2D, "res://addons/adventure-kit/icons/walk.svg"
 
 export var speed := 100.0 setget _set_speed, _get_speed
 export var input_disabled := false setget _set_input_disabled, _get_input_disabled
 onready var _agent := $NavigationAgent2D as NavigationAgent2D
 
 var _velocity := Vector2.ZERO
+var walk_ended := true
 
-
-func _enter_tree():
-	if !Engine.editor_hint:
-		return
-
-	var root = get_tree().edited_scene_root
-	if !has_node("NavigationAgent2D"):
-		_agent = NavigationAgent2D.new()
-		add_child(_agent)
-		_agent.owner = root
-
-	if !has_node("CollisionShape2D"):
-		var collision = CollisionShape2D.new()
-		collision.shape = CapsuleShape2D.new()
-		add_child(collision)
-		collision.owner = root
-
+signal walk(direction, speed)
+signal walk_end()
 
 func _set_input_disabled(disabled: bool):
 	set_process_input(!disabled)
@@ -35,15 +20,15 @@ func _get_input_disabled() -> bool:
 	return !is_processing_input()
 
 
-func _input(event):
-	if not event.is_action_pressed("left_click"):
-		return
+# func _input(event):
+# 	if not event.is_action_pressed("left_click"):
+# 		return
 
-	var mouse_pos := get_global_mouse_position()
-	move_to(mouse_pos)
+# 	var mouse_pos := get_global_mouse_position()
+# 	walk_to(mouse_pos)
 
 
-func move_to(location: Vector2):
+func walk_to(location: Vector2):
 	_agent.set_target_location(location)
 
 
@@ -55,8 +40,25 @@ func _get_speed() -> float:
 	return _agent.max_speed
 
 
+func _process(delta):
+	if Input.is_action_just_pressed("left_click"):
+		var mouse_pos := get_global_mouse_position()
+		walk_ended = false
+		walk_to(mouse_pos)
+		return
+
+	# var dir := Vector2.ZERO
+	# dir.y = Input.get_axis("ui_up", "ui_down")
+	# dir.x = Input.get_axis("ui_left", "ui_right")
+	# walk_to(global_position + dir * speed)
+
+
 func _physics_process(delta: float) -> void:
 	if _agent.is_navigation_finished():
+		if !walk_ended:
+			walk_ended = true
+			# emit_signal("walk", Vector2.ZERO, 0.0)
+			emit_signal("walk_end")
 		return
 
 	var target_global_position := _agent.get_next_location()
@@ -65,3 +67,4 @@ func _physics_process(delta: float) -> void:
 	_velocity += (desired_velocity - _velocity) * delta * 8.0
 	_agent.set_velocity(_velocity)
 	move_and_collide(_velocity * delta)
+	emit_signal("walk", direction, _agent.max_speed)

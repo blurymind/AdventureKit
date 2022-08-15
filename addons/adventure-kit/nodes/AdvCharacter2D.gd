@@ -9,7 +9,12 @@ var _velocity := Vector2.ZERO
 var walk_ended := true
 
 signal walk(direction, speed)
-signal walk_end()
+signal walk_end
+
+
+func _ready():
+	add_to_group("characters")
+
 
 func _set_input_disabled(disabled: bool):
 	set_process_input(!disabled)

@@ -9,6 +9,9 @@ export_presets.cfg
 mono_crash.*.*.json
 
 # Project specific
-addons/godot-plugin-refresher
+/.plugged/
+/addons/*
+!addons/gd-plug
+!addons/adventure-kit
 .vscode/
 *.ini

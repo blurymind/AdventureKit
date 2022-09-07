@@ -1,4 +1,4 @@
-extends "res://addons/adventure/nodes/Region2D.gd"
+extends Region2D
 
 export var hover_color := Color.blue
 export var highlight_color := Color.white

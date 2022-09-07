@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://addons/advanced-text/nodes/AdvancedTextLabel.gd" type="Script" id=1]
+[ext_resource path="res://addons/adventure-kit/fonts/AdvancedTextTheme.tres" type="Theme" id=2]
+[ext_resource path="res://addons/adventure-kit/fonts/NamesFont.tres" type="DynamicFont" id=3]
+[ext_resource path="res://addons/adventure-kit/ui/InGameUI/DialogueUI/DialogueContainer.gd" type="Script" id=4]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[node name="DialoguePanel" type="Panel"]
+margin_right = 341.0
+margin_bottom = 94.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="DialogueContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 4 )
+
+[node name="DialogLabel" type="RichTextLabel" parent="DialogueContainer"]
+margin_right = 341.0
+margin_bottom = 94.0
+rect_min_size = Vector2( 0, 50 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 2 )
+bbcode_enabled = true
+bbcode_text = "Character is saying somethings here.
+"
+text = "Character is saying somethings here.
+"
+scroll_active = false
+script = ExtResource( 1 )
+__meta__ = {
+"_default_markup": "markdown",
+"_edit_use_anchors_": false
+}
+markup_text = "Character is saying somethings here.
+"
+markup = "markdown"
+headers_fonts = [ ExtResource( 3 ) ]

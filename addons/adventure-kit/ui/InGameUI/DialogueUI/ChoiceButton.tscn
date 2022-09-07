@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://addons/advanced-text/examples/AdvancedTextLabel.tscn" type="PackedScene" id=1]
+[ext_resource path="res://addons/advanced-text/examples/AdvancedTextButton/AdvancedTextButton.gd" type="Script" id=2]
+
+[node name="ChoiceButton" type="Button"]
+margin_top = 1.0
+margin_right = 500.0
+margin_bottom = 51.0
+rect_min_size = Vector2( 0, 50 )
+flat = true
+script = ExtResource( 2 )
+
+[node name="AdvancedTextLabel" parent="." instance=ExtResource( 1 )]
+bbcode_text = "[font=res://addons/material-design-icons/fonts/24.tres]󰁕[/font] [font=res://addons/advanced-text/font/DejaVuSans-H3.tres]Choice[/font]
+ "
+text = "󰁕 Choice
+ "
+markup_text = "[icon=arrow-right-thick] # Choice
+ "

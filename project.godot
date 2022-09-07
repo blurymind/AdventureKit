@@ -19,6 +19,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/advanced-text/nodes/AdvancedTextLabel.gd"
 }, {
+"base": "KinematicBody2D",
+"class": "AdventureCharacter2D",
+"language": "GDScript",
+"path": "res://test/nav_test/AdvCharacter2D.gd"
+}, {
 "base": "TextEdit",
 "class": "CodeEdit",
 "language": "GDScript",
@@ -38,16 +43,6 @@ _global_script_classes=[ {
 "class": "Emojis",
 "language": "GDScript",
 "path": "res://addons/emojis-for-godot/emojis/emojis.gd"
-}, {
-"base": "Reference",
-"class": "GutHookScript",
-"language": "GDScript",
-"path": "res://addons/gut/hook_script.gd"
-}, {
-"base": "Node",
-"class": "GutTest",
-"language": "GDScript",
-"path": "res://addons/gut/test.gd"
 }, {
 "base": "Resource",
 "class": "HistoryEntry",
@@ -92,12 +87,11 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "AdvancedTextButton": "",
 "AdvancedTextLabel": "res://addons/advanced-text/icons/AdvancedTextLabel.svg",
+"AdventureCharacter2D": "",
 "CodeEdit": "res://addons/advanced-text/icons/CodeEdit.svg",
 "EmojiButton": "res://addons/emojis-for-godot/icons/EmojiButton.svg",
 "EmojiIcon": "res://addons/emojis-for-godot/icons/EmojiIcon.svg",
 "Emojis": "",
-"GutHookScript": "",
-"GutTest": "",
 "HistoryEntry": "",
 "MaterialButton": "res://addons/material-design-icons/nodes/MaterialButton.svg",
 "MaterialIcon": "res://addons/material-design-icons/nodes/MaterialIcon.svg",
@@ -136,7 +130,7 @@ kit/saves/page_names=[  ]
 [application]
 
 config/name="Adventure"
-run/main_scene="res://addons/adventure-kit/test/Test.tscn"
+run/main_scene="res://test/nav_test/nav_test.tscn"
 config/icon="res://icon.png"
 
 [autoload]
@@ -149,6 +143,11 @@ RenpyParser="*res://addons/advanced-text/parsers/RenpyParser.gd"
 Kit="*res://addons/adventure-kit/kit.gd"
 Window="*res://addons/adventure-kit/ui/Window/Window.tscn"
 Cursor="*res://cursor/Cursor.tscn"
+
+[debug]
+
+gdscript/warnings/unused_variable=false
+gdscript/warnings/return_value_discarded=false
 
 [display]
 
@@ -164,6 +163,16 @@ enabled=PoolStringArray( "res://addons/Rakugo/plugin.cfg", "res://addons/advance
 highlight={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+left_click={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+right_click={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":2,"pressed":false,"doubleclick":false,"script":null)
  ]
 }
 

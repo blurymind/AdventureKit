@@ -14,14 +14,14 @@ animations = [ {
 "name": "default",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 6 ) ],
-"loop": true,
-"name": "look_at",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 2 ) ],
 "loop": true,
 "name": "go_to",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "look_at",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 4 ) ],
@@ -36,6 +36,7 @@ animations = [ {
 } ]
 
 [node name="Cursor" type="AnimatedSprite"]
+visible = false
 frames = SubResource( 1 )
 playing = true
 script = ExtResource( 1 )
